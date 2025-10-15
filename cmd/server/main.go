@@ -1,20 +1,16 @@
 package main
 
 import (
-    "github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
+	"github.com/chiarorosa/go-todo-api/internal/tasks"
 )
 
 func main() {
-    // Cria uma instância padrão do servidor Gin
-    r := gin.Default()
+	r := gin.Default()
 
-    // Define uma rota GET simples
-    r.GET("/", func(c *gin.Context) {
-        c.JSON(200, gin.H{
-            "message": "Servidor Go com Gin está rodando!",
-        })
-    })
+	repo := tasks.NewRepository()
+	handler := tasks.NewHandler(repo)
+	handler.RegisterRoutes(r)
 
-    // Inicia o servidor na porta 8080
-    r.Run(":8080")
+	r.Run(":8080")
 }
