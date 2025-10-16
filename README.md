@@ -34,7 +34,8 @@ API REST simples para gerenciamento de tarefas (to-do) escrita em Go, utilizando
 
 ## Endpoints
 
-- **GET `/tasks`**Retorna todas as tarefas cadastradas.
+- **GET `/tasks`**
+  Retorna todas as tarefas cadastradas.
 
   ```bash
   curl http://localhost:8080/tasks
